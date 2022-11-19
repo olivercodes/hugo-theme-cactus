@@ -110,12 +110,12 @@
   {{ end }}
 
   {{ $showTalksList := false }}
-  {{ if (isset .Site.Params "showtalkslist") }}
-    {{ $showtalkslist = .Site.Params.showtalkslist }}
+  {{ if (isset .Site.Params "showTalksList") }}
+    {{ $showtalkslist = .Site.Params.showTalksList }}
   {{ else if .Site.Data.talks }}
     {{ $showTalksList = true }}
   {{ end }}
-  {{ if $showTalksList }}
+  {{ if $showtalkslist }}
     {{ $talksUrl := "#" }}
     {{ if isset .Site.Params "talksUrl" }}
       {{ $talksUrl = .Site.Params.talksUrl }}
