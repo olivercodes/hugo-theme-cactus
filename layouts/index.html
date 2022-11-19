@@ -108,4 +108,27 @@
     </ul>
   </section>
   {{ end }}
+
+  {{ $showTalksList := false }}
+  {{ if (isset .Site.Params "showtalkslist") }}
+    {{ $showtalkslist = .Site.Params.showtalkslist }}
+  {{ else if .Site.Data.talks }}
+    {{ $showTalksList = true }}
+  {{ end }}
+  {{ if $showTalksList }}
+    {{ $talksUrl := "#" }}
+    {{ if isset .Site.Params "talksUrl" }}
+      {{ $talksUrl = .Site.Params.talksUrl }}
+    {{ end }}
+  <section id="talks">
+    <span class="h1"><a href="{{ $talksUrl }}">Talks</a></span>
+    <ul class="talk-list">
+        {{ range .Site.Data.talks.list }}
+        <li class="project-item">
+          <a href="{{ .url }}">{{ .name }}</a>: {{ .desc | markdownify }}
+        </li>
+        {{ end }}
+    </ul>
+  </section>
+  {{ end }}
 {{ end }}
